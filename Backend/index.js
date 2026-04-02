@@ -4,6 +4,7 @@ dotenv.config();
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/Auth.js';
 import cors from 'cors';
+import interviewRoutes from './routes/interview.js';
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
   origin: "http://localhost:5173"
 }));
 app.use('/api/auth', authRoutes);
+app.use('/api/interview', interviewRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');

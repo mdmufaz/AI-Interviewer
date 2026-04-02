@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
+    <div className="bg-green-700 text-white px-6 py-4 flex justify-between items-center">
       
-      <h1 className="text-xl font-bold">AI Interviewer</h1>
+      <h1 className="text-2xl font-bold ">AI Interviewer</h1>
 
       <div className="flex gap-6">
-        <Link to="/" className="hover:text-gray-300">Home</Link>
-        <Link to="/login" className="hover:text-gray-300">Login</Link>
-        <Link to="/signup" className="hover:text-gray-300">Sign Up</Link>
+        <Link to="/" className="hover:text-gray-300 text-xl">Home</Link>
+        <Link to="/login" className="hover:text-gray-300 text-xl">Login</Link>
+        <Link to="/signup" className="hover:text-gray-300 text-xl ">Sign Up</Link>
       </div>
 
     </div>
