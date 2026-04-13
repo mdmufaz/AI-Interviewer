@@ -6,6 +6,8 @@ import Navbar from './components/Navbar.jsx'
 import InterviewSetup from './pages/InterviewSetup.jsx'
 import InterviewSession from './pages/interview-session.jsx'
 import Result from './pages/result.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import Dashboard from './pages/Dashboard.jsx';
 
 
 function App() {
@@ -14,11 +16,12 @@ function App() {
     <Navbar />      
     <Routes>
       <Route path="/interview-setup" element={<InterviewSetup />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/interview-session" element={<InterviewSession />} />
       <Route path="/result" element={<Result />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
     </div>
   );  

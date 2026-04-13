@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function InterviewSetup() {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         topic: "",
@@ -22,6 +23,7 @@ function InterviewSetup() {
 
     const handleStart = async () => {
         try {
+            setLoading(true);
             if (!formData.topic) {
                 alert("Please select a topic");
                 return;
@@ -44,6 +46,7 @@ function InterviewSetup() {
             }
 
             console.log(data);
+            setLoading(false);
 
         } catch (err) {
             console.error(err);
@@ -87,10 +90,10 @@ function InterviewSetup() {
 
                 <button
                     onClick={handleStart}
-                    className="bg-green-500 w-full p-2 rounded text-white"
-                
-                 >
-                    Start
+                    className="bg-green-500 w-full p-2 rounded text-white disabled:opacity-50"
+                    disabled={loading}
+                >
+                    {loading ? "Generating Questions..." : "Start"}
                 </button>
             </div>
         </div>

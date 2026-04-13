@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import openai from "../config/openrouter.js";
-
+import Interview from "../models/Interview.js";
 dotenv.config();
 
 const router = express.Router();
@@ -40,7 +40,7 @@ Return ONLY JSON.
 `;
 
     const completion = await openai.chat.completions.create({
-      model: "gryphe/mythomax-l2-13b",
+model: "openai/gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.5,
     });
@@ -122,7 +122,7 @@ ${formattedQA}
 `;
 
     const completion = await openai.chat.completions.create({
-      model: "gryphe/mythomax-l2-13b", // ✅ your model
+  model: "openai/gpt-4o-mini",
       messages: [
         {
           role: "user",
@@ -159,7 +159,11 @@ ${formattedQA}
         ]
       };
     }
-
+    await Interview.create({
+  userId: "demo-user", // later we improve
+  score: parsed.score,
+  feedback: parsed.feedback
+});
     res.json(parsed);
 
   } catch (error) {
@@ -172,4 +176,15 @@ ${formattedQA}
   }
 });
 
+router.get("/history", async (req, res) => {
+  try {
+    const data = await Interview.find({
+      userId: "demo-user"
+    }).sort({ date: -1 });
+
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Error" });
+  }
+});
 export default router;

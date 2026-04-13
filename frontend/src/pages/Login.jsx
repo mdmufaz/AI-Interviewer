@@ -27,10 +27,13 @@ function Login() {
       });
 
       const data = await response.json();
+      console.log("Login response:", data);
 
       if (response.ok) {
         // Save token
         localStorage.setItem("token", data.token);
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("user", JSON.stringify(data.user));
 
         // Redirect
         navigate("/");
@@ -59,8 +62,9 @@ function Login() {
         placeholder="Password"
         onChange={handleChange}
       />
+                      <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white p-2 rounded ">Login</button>
+
     </form>
-                <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white p-2 rounded ">Login</button>
 
       </div>
 

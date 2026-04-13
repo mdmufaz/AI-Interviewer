@@ -68,12 +68,12 @@ function InterviewSession() {
             console.log("Result:", data);
 
             navigate("/result", { state: data });
+            setLoading(false);
 
         } catch (error) {
             console.error("Submit error:", error);
             alert("Something went wrong. Try again.");
         } finally {
-            setLoading(false);
         }
     };
 
@@ -149,8 +149,7 @@ function InterviewSession() {
                     <button
                         className="bg-green-500 hover:bg-green-700 py-2 px-4 rounded mt-4 w-full disabled:opacity-50"
                         onClick={handleSubmit}
-                        disabled={loading}
-                    >
+                        disabled={loading}>
                         {loading ? "Submitting..." : "Submit"}
                     </button>
                 )}
