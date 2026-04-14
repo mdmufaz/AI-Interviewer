@@ -54,8 +54,8 @@ function InterviewSetup() {
     };
 
     return (
-        <div className="h-screen flex justify-center items-center bg-gray-900">
-            <div className="bg-gray-800 p-6 rounded w-96">
+        <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-black flex justify-center items-center ">
+            <div className="bg-gray-700 p-6 rounded-xl sha w-96">
                 <h2 className="text-white text-xl mb-4">Start Interview</h2>
 
                 <select name="topic" onChange={handleChange} className="w-full mb-3 p-2">
