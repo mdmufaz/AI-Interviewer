@@ -2,6 +2,8 @@ import express from "express";
 import multer from "multer";
 import fs from "fs";
 import { extractText } from "unpdf";
+import protect from "../middleware/auth.js";
+
 
 const router = express.Router();
 
@@ -17,7 +19,7 @@ const upload = multer({
     }
 });
 
-router.post("/upload", upload.single("resume"), async (req, res) => {
+router.post("/upload",protect, upload.single("resume"), async (req, res) => {
     if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
     }
@@ -31,9 +33,9 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
 
         fs.unlinkSync(req.file.path);
 
-        console.log("=== PDF EXTRACTION ===");
-        console.log("Length:", resumeText.length);
-        console.log("Preview:", resumeText.slice(0, 300));
+        // console.log("=== PDF EXTRACTION ===");
+        // console.log("Length:", resumeText.length);
+        // console.log("Preview:", resumeText.slice(0, 300));
 
         if (!resumeText || resumeText.trim().length < 20) {
             return res.status(400).json({

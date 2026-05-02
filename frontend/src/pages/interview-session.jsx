@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { authFetch } from "../utils/api.js";
 
 function InterviewSession() {
     const navigate = useNavigate();
@@ -53,11 +54,8 @@ function InterviewSession() {
                 answer: answers[index] || "",
             }));
 
-            const res = await fetch("http://localhost:5000/api/interview/submit", {
+            const res = await authFetch("http://localhost:5000/api/interview/submit", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify({
                     answers: formattedAnswers,
                 }),
@@ -103,10 +101,9 @@ function InterviewSession() {
                                     })
                                 }
                                 className={`block w-full text-left px-4 py-2 mb-2 rounded 
-                                    ${
-                                        answers[currentIndex] === option
-                                            ? "bg-blue-500"
-                                            : "bg-gray-700 hover:bg-gray-600"
+                                    ${answers[currentIndex] === option
+                                        ? "bg-blue-500"
+                                        : "bg-gray-700 hover:bg-gray-600"
                                     }`}
                             >
                                 {option}

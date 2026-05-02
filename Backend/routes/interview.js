@@ -3,13 +3,14 @@ import dotenv from "dotenv";
 import openai from "../config/openrouter.js";
 import Interview from "../models/Interview.js";
 dotenv.config();
+import protect from "../middleware/auth.js";
 
 const router = express.Router();
 
 const AI_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
 
 // ✅ Start Interview
-router.post("/start", async (req, res) => {
+router.post("/start",protect, async (req, res) => {
   try {
     const { topic, difficulty, type, numQuestions } = req.body;
 
@@ -89,7 +90,7 @@ Rules:
 });
 
 // ✅ Submit Interview
-router.post("/submit", async (req, res) => {
+router.post("/submit",protect, async (req, res) => {
   try {
     const { answers } = req.body;
 
@@ -150,7 +151,7 @@ ${formattedQA}
     }
 
     await Interview.create({
-      userId: "demo-user",
+      userId: req.userId,
       score: parsed.score,
       feedback: parsed.feedback
     });
@@ -164,9 +165,9 @@ ${formattedQA}
 });
 
 // ✅ History
-router.get("/history", async (req, res) => {
+router.get("/history",protect, async (req, res) => {
   try {
-    const data = await Interview.find({ userId: "demo-user" }).sort({ date: -1 });
+    const data = await Interview.find({ userId: req.userId }).sort({ date: -1 });
     res.json(data);
   } catch (err) {
     res.status(500).json({ message: "Error" });
@@ -174,7 +175,7 @@ router.get("/history", async (req, res) => {
 });
 
 // ✅ Search Topic
-router.post("/search-topic", async (req, res) => {
+router.post("/search-topic",protect, async (req, res) => {
   try {
     const { query } = req.body;
 
@@ -219,7 +220,7 @@ Return ONLY JSON:
 });
 
 // ✅ Start From Resume
-router.post("/start-from-resume", async (req, res) => {
+router.post("/start-from-resume",protect, async (req, res) => {
   try {
     const { resumeText, resumeData, difficulty, type, numQuestions } = req.body;
 

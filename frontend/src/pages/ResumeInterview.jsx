@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUpload, FaFileAlt, FaCheckCircle } from "react-icons/fa";
+import { authFetch } from "../utils/api.js";
 
 function StepIndicator({ step }) {
     const steps = ["Upload", "Configure", "Start"];
@@ -44,7 +45,7 @@ function ResumeInterview() {
         try {
             setUploading(true);
 
-            const res = await fetch("http://localhost:5000/api/resume/upload", {
+            const res = await authFetch("http://localhost:5000/api/resume/upload", {
                 method: "POST",
                 body: formData
             });
@@ -72,9 +73,8 @@ function ResumeInterview() {
         try {
             setGenerating(true);
 
-            const res = await fetch("http://localhost:5000/api/interview/start-from-resume", {
+            const res = await authFetch("http://localhost:5000/api/interview/start-from-resume", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     resumeText,
                     resumeData,
@@ -83,7 +83,6 @@ function ResumeInterview() {
                     numQuestions: config.numQuestions
                 })
             });
-
             const data = await res.json();
 
             if (res.ok) {

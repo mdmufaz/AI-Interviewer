@@ -80,6 +80,7 @@ function Home() {
               Visualize your growth with analytics and performance charts.
             </p>
           </div>
+          
 
         </div>
       </div>

@@ -14,14 +14,11 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900/80 backdrop-blur-md text-white px-8 py-4 flex justify-between items-center shadow-lg">
-
+<nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-black/80 backdrop-blur-lg border-b border-white/10 text-white px-8 py-4 flex justify-between items-center shadow-xl">
       {/* 🔥 LOGO */}
       <h1
         onClick={() => navigate("/")}
-        className="text-2xl font-bold text-green-400 cursor-pointer hover:scale-105 transition"
-      >
-        AI Interviewer
+className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent cursor-pointer" >       AI Interviewer
       </h1>
 
       {/* 🔥 RIGHT SECTION */}

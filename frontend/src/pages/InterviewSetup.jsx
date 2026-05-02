@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authFetch } from "../utils/api.js";
 
 function InterviewSetup() {
     const navigate = useNavigate();
@@ -35,14 +36,10 @@ function InterviewSetup() {
         try {
             setLoading(true);
 
-            const res = await fetch("http://localhost:5000/api/interview/start", {
+            const res = await authFetch("http://localhost:5000/api/interview/start", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
                 body: JSON.stringify(formData)
             });
-
             const data = await res.json();
 
             if (res.ok) {
@@ -71,11 +68,8 @@ function InterviewSetup() {
         try {
             setSearchLoading(true);
 
-            const res = await fetch("http://localhost:5000/api/interview/search-topic", {
+            const res = await authFetch("http://localhost:5000/api/interview/search-topic", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify({ query: formData.topic }),
             });
 
@@ -103,18 +97,16 @@ function InterviewSetup() {
                 <div className="flex gap-2 mb-3">
                     <button
                         onClick={() => setUseCustomTopic(false)}
-                        className={`w-full p-2 rounded ${
-                            !useCustomTopic ? "bg-blue-500" : "bg-gray-600"
-                        }`}
+                        className={`w-full p-2 rounded ${!useCustomTopic ? "bg-blue-500" : "bg-gray-600"
+                            }`}
                     >
                         Select Topic
                     </button>
 
                     <button
                         onClick={() => setUseCustomTopic(true)}
-                        className={`w-full p-2 rounded ${
-                            useCustomTopic ? "bg-purple-500" : "bg-gray-600"
-                        }`}
+                        className={`w-full p-2 rounded ${useCustomTopic ? "bg-purple-500" : "bg-gray-600"
+                            }`}
                     >
                         Search Topic with AI
                     </button>
