@@ -10,7 +10,7 @@ function Home() {
 
       {/* 🔥 HERO */}
       <div className="flex flex-col justify-center items-center text-center px-6 py-24">
-        
+
         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
           <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
             Crack Your Interviews
@@ -36,6 +36,12 @@ function Home() {
             className="bg-gray-700 px-8 py-3 rounded-lg text-lg hover:bg-gray-600 transition transform hover:scale-105"
           >
             View Dashboard
+          </button>
+          <button
+            onClick={() => navigate("/resume-interview")}
+            className="bg-purple-600 px-8 py-3 rounded-lg text-lg hover:bg-purple-700 transition transform hover:scale-105"
+          >
+            📄 Resume Interview
           </button>
         </div>
       </div>

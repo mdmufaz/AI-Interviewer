@@ -8,7 +8,7 @@ import InterviewSession from './pages/interview-session.jsx'
 import Result from './pages/result.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-
+import ResumeInterview from './pages/ResumeInterview.jsx';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       <Route path="/interview-session" element={<InterviewSession />} />
       <Route path="/result" element={<Result />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/resume-interview" element={<ResumeInterview />} />
     </Routes>
     </div>
   );  

@@ -5,6 +5,10 @@ import { connectDB } from './config/db.js';
 import authRoutes from './routes/Auth.js';
 import cors from 'cors';
 import interviewRoutes from './routes/interview.js';
+import resumeRoutes from './routes/resume.js';
+import { mkdirSync } from 'fs';
+
+mkdirSync('uploads', { recursive: true });
 
 
 const app = express();
@@ -15,6 +19,7 @@ app.use(cors({
 }));
 app.use('/api/auth', authRoutes);
 app.use('/api/interview', interviewRoutes);
+app.use('/api/resume', resumeRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
