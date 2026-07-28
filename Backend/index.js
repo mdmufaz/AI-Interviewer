@@ -17,7 +17,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://ai-interviewer-amber-xi.vercel.app",
-    "https://ai-interviewer-bhcya09p7-mufaz.vercel.app"
+    "https://ai-interviewer-mufaz.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
