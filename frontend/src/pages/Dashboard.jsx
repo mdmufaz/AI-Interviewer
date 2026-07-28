@@ -15,7 +15,7 @@ function Dashboard() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await authFetch("http://localhost:5000/api/interview/history");
+        const res = await authFetch("/api/interview/history");
         const data = await res.json();
 
         console.log("DATA:", data); // 👈 CHECK THIS

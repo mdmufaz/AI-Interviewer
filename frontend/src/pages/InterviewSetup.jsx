@@ -36,7 +36,7 @@ function InterviewSetup() {
         try {
             setLoading(true);
 
-            const res = await authFetch("http://localhost:5000/api/interview/start", {
+            const res = await authFetch("/api/interview/start", {
                 method: "POST",
                 body: JSON.stringify(formData)
             });
@@ -68,7 +68,7 @@ function InterviewSetup() {
         try {
             setSearchLoading(true);
 
-            const res = await authFetch("http://localhost:5000/api/interview/search-topic", {
+            const res = await authFetch("/api/interview/search-topic", {
                 method: "POST",
                 body: JSON.stringify({ query: formData.topic }),
             });

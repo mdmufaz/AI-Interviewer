@@ -54,7 +54,7 @@ function InterviewSession() {
                 answer: answers[index] || "",
             }));
 
-            const res = await authFetch("http://localhost:5000/api/interview/submit", {
+            const res = await authFetch("/api/interview/submit", {
                 method: "POST",
                 body: JSON.stringify({
                     answers: formattedAnswers,
