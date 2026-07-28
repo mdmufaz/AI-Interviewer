@@ -16,34 +16,35 @@ function Login() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
+  const API_URL = import.meta.env.VITE_API_URL;
 
-      const data = await response.json();
-      console.log("Login response:", data);
+  try {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
 
-      if (response.ok) {
-        // Save token
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("user", JSON.stringify(data.user));
+    const data = await response.json();
 
-        // Redirect
-        navigate("/");
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
+    if (response.ok) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      navigate("/");
+    } else {
+      alert(data.message);
     }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-700"> 
