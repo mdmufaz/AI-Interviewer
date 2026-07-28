@@ -15,9 +15,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173"
-}));
-app.use('/api/auth', authRoutes);
+    origin: [
+        "http://localhost:5173",
+        "https://ai-interviewer-amber-xi.vercel.app"
+    ],
+    credentials: true
+}));app.use('/api/auth', authRoutes);
 app.use('/api/interview', interviewRoutes);
 app.use('/api/resume', resumeRoutes);
 
@@ -25,7 +28,7 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     connectDB();
   console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
