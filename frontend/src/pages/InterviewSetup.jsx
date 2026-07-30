@@ -29,7 +29,7 @@ function InterviewSetup() {
     // ✅ START INTERVIEW
     const handleStart = async () => {
         if (!formData.topic) {
-            alert("Please select or enter a topic");
+            alert("Please select or enter  a topic");
             return;
         }
 
@@ -40,7 +40,7 @@ function InterviewSetup() {
                 method: "POST",
                 body: JSON.stringify(formData)
             });
-            console.log(authFetch);
+              console.log(authFetch);
             const data = await res.json();
 
             if (res.ok) {
