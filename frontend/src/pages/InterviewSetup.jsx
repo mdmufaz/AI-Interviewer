@@ -26,38 +26,37 @@ function InterviewSetup() {
         });
     };
 
-    // ✅ START INTERVIEW
-    // const handleStart = async () => {
-    //     if (!formData.topic) {
-    //         alert("Please select or enter  a topic");
-    //         return;
-    //     }
+    const handleStart = async () => {
+        if (!formData.topic) {
+            alert("Please select or enter  a topic");
+            return;
+        }
 
-    //     try {
-    //         setLoading(true);
-    //         console.log(authFetch);
-    //         const res = await authFetch("/api/interview/start", {
-    //             method: "POST",
-    //             body: JSON.stringify(formData)
-    //         });
-    //           console.log(authFetch);
-    //         const data = await res.json();
+        try {
+            setLoading(true);
+            console.log(authFetch);
+            const res = await authFetch("/api/interview/start", {
+                method: "POST",
+                body: JSON.stringify(formData)
+            });
+              console.log(authFetch);
+            const data = await res.json();
 
-    //         if (res.ok) {
-    //             navigate("/interview-session", {
-    //                 state: { questions: data.questions }
-    //             });
-    //         } else {
-    //             alert("Failed to generate questions");
-    //         }
+            if (res.ok) {
+                navigate("/interview-session", {
+                    state: { questions: data.questions }
+                });
+            } else {
+                alert("Failed to generate questions");
+            }
 
-    //     } catch (err) {
-    //         console.error(err);
-    //         alert("Server error");
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+        } catch (err) {
+            console.error(err);
+            alert("Server error");
+        } finally {
+            setLoading(false);
+        }
+    };
     const handleStart = async () => {
     console.log("Button clicked");
 
