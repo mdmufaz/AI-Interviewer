@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { authFetch } from "../utils/api.js";
+import { authFetch } from "./utils/api.js";
 
 function InterviewSession() {
     const navigate = useNavigate();

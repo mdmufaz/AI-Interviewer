@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUpload, FaFileAlt, FaCheckCircle } from "react-icons/fa";
-import { authFetch } from "../utils/api.js";
+import { authFetch } from "./utils/api.js";
 
 function StepIndicator({ step }) {
     const steps = ["Upload", "Configure", "Start"];
