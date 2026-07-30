@@ -7,7 +7,7 @@ import {
   Tooltip,
   CartesianGrid
 } from "recharts";
-import { authFetch } from "../utils/api.js";
+import { authFetch } from "./utils/api.js";
 
 function Dashboard() {
   const [history, setHistory] = useState([]);
