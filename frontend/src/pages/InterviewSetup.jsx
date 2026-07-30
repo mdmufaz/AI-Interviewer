@@ -27,37 +27,56 @@ function InterviewSetup() {
     };
 
     // ✅ START INTERVIEW
+    // const handleStart = async () => {
+    //     if (!formData.topic) {
+    //         alert("Please select or enter  a topic");
+    //         return;
+    //     }
+
+    //     try {
+    //         setLoading(true);
+    //         console.log(authFetch);
+    //         const res = await authFetch("/api/interview/start", {
+    //             method: "POST",
+    //             body: JSON.stringify(formData)
+    //         });
+    //           console.log(authFetch);
+    //         const data = await res.json();
+
+    //         if (res.ok) {
+    //             navigate("/interview-session", {
+    //                 state: { questions: data.questions }
+    //             });
+    //         } else {
+    //             alert("Failed to generate questions");
+    //         }
+
+    //     } catch (err) {
+    //         console.error(err);
+    //         alert("Server error");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
     const handleStart = async () => {
-        if (!formData.topic) {
-            alert("Please select or enter  a topic");
-            return;
-        }
+    console.log("Button clicked");
 
-        try {
-            setLoading(true);
-            console.log(authFetch);
-            const res = await authFetch("/api/interview/start", {
-                method: "POST",
-                body: JSON.stringify(formData)
-            });
-              console.log(authFetch);
-            const data = await res.json();
+    try {
+        const res = await authFetch("/api/interview/start", {
+            method: "POST",
+            body: JSON.stringify(formData),
+        });
 
-            if (res.ok) {
-                navigate("/interview-session", {
-                    state: { questions: data.questions }
-                });
-            } else {
-                alert("Failed to generate questions");
-            }
+        console.log("Status:", res.status);
+        console.log("URL:", res.url);
 
-        } catch (err) {
-            console.error(err);
-            alert("Server error");
-        } finally {
-            setLoading(false);
-        }
-    };
+        const text = await res.text();
+        console.log("Response:", text);
+
+    } catch (err) {
+        console.error("ERROR:", err);
+    }
+};
 
     // ✅ AI SEARCH
     const handleSearchTopic = async () => {
