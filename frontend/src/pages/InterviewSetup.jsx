@@ -57,25 +57,7 @@ function InterviewSetup() {
             setLoading(false);
         }
     };
-    const handleStart = async () => {
-    console.log("Button clicked");
-
-    try {
-        const res = await authFetch("/api/interview/start", {
-            method: "POST",
-            body: JSON.stringify(formData),
-        });
-
-        console.log("Status:", res.status);
-        console.log("URL:", res.url);
-
-        const text = await res.text();
-        console.log("Response:", text);
-
-    } catch (err) {
-        console.error("ERROR:", err);
-    }
-};
+ 
 
     // ✅ AI SEARCH
     const handleSearchTopic = async () => {
