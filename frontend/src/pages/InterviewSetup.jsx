@@ -35,11 +35,12 @@ function InterviewSetup() {
 
         try {
             setLoading(true);
-
+            console.log(authFetch);
             const res = await authFetch("/api/interview/start", {
                 method: "POST",
                 body: JSON.stringify(formData)
             });
+            console.log(authFetch);
             const data = await res.json();
 
             if (res.ok) {
