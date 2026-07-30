@@ -45,7 +45,7 @@ function ResumeInterview() {
         try {
             setUploading(true);
 
-            const res = await authFetch("http://localhost:5000/api/resume/upload", {
+            const res = await authFetch("/api/resume/upload", {
                 method: "POST",
                 body: formData
             });
@@ -73,7 +73,7 @@ function ResumeInterview() {
         try {
             setGenerating(true);
 
-            const res = await authFetch("api/interview/start-from-resume", {
+            const res = await authFetch("/api/interview/start-from-resume", {
                 method: "POST",
                 body: JSON.stringify({
                     resumeText,
